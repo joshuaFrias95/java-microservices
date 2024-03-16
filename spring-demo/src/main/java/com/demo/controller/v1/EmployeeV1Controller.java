@@ -1,4 +1,4 @@
-package com.demo.controller;
+package com.demo.controller.v1;
 
 import com.demo.model.Employee;
 import com.demo.service.EmployeeService;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employees")
-public class EmployeeController {
+@RequestMapping("/v1/employees")
+public class EmployeeV1Controller {
 
     @Autowired
     private EmployeeService employeeService;
