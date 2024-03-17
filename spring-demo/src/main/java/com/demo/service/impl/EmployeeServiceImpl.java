@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Service
+@Service("EmployeeServiceImpl")
 public class EmployeeServiceImpl implements EmployeeService {
 
     List<Employee> employeeList = new ArrayList<>();
