@@ -60,6 +60,7 @@ public class EmployeeEntityServiceImpl implements EmployeeService {
 
     @Override
     public String deleteEmployeeByid(String id) {
-        return null;
+        employeeRepository.deleteById(id);
+        return "The employee with the id \'" + id + "\' was removed";
     }
 }
