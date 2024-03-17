@@ -18,7 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee save(Employee employee) {
 
         if (employee.getEmployeeID() == null || employee.getEmailId().isEmpty()) {
-            employee.setEmployeeID(UUID.randomUUID().toString());
+            employee.setEmployeeID(UUID.randomUUID().toString().substring(0,6));
         }
 
         employeeList.add(employee);

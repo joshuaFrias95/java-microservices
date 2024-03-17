@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service("EmployeeEntityServiceImpl")
 public class EmployeeEntityServiceImpl implements EmployeeService {
@@ -21,7 +22,7 @@ public class EmployeeEntityServiceImpl implements EmployeeService {
     public Employee save(Employee employee) {
 
         if (employee.getEmployeeID() == null || employee.getEmailId().isEmpty()) {
-            employee.setEmployeeID(UUID.randomUUID().toString());
+            employee.setEmployeeID(UUID.randomUUID().toString().substring(0,6));
         }
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
@@ -33,12 +34,28 @@ public class EmployeeEntityServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getAllEmployees() {
-        return null;
+
+        List<EmployeeEntity> employeeEntityList = employeeRepository.findAll();
+        List<Employee> employees = employeeEntityList.stream()
+                .map(employeeEntity -> {
+                    Employee employee = new Employee();
+                    BeanUtils.copyProperties(employeeEntity, employee);
+                    return employee;
+                })
+                .collect(Collectors.toList());
+
+        return employees;
     }
 
     @Override
     public Employee getEmployeeById(String id) {
-        return null;
+
+        EmployeeEntity employeeEntity = employeeRepository.findById(id).get();
+        Employee employee = new Employee();
+
+        BeanUtils.copyProperties(employeeEntity, employee);
+
+        return employee;
     }
 
     @Override
