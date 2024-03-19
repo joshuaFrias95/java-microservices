@@ -1,13 +1,12 @@
 package com.microservicePractice.productService.service.impl;
 
-import com.microservicePractice.productService.entity.Product;
+import com.microservicePractice.productService.entity.ProductEntity;
 import com.microservicePractice.productService.exceptions.ProductServiceExceptionHandler;
 import com.microservicePractice.productService.model.request.ProductRequest;
 import com.microservicePractice.productService.model.response.ProductResponse;
 import com.microservicePractice.productService.repository.ProductRepository;
 import com.microservicePractice.productService.service.ProductService;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
         log.info("Adding product...");
 
-        Product product = Product.builder()
+        ProductEntity product = ProductEntity.builder()
                 .name(productRequest.getName())
                 .quantity(productRequest.getQuantity())
                 .price(productRequest.getPrice())
@@ -41,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse getProductById(long id) {
 
         log.info("Get the product for the id: {}", id);
-        Product product = productRepository.findById(id)
+        ProductEntity product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductServiceExceptionHandler("Product with given id not found", "PRODUCT_NOT_FOUND"));
 
         ProductResponse productResponse = new ProductResponse();

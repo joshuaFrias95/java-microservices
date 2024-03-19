@@ -6,7 +6,7 @@ import lombok.*;
 @Data @Builder
 @AllArgsConstructor @NoArgsConstructor
 @Entity @Table(name = "products")
-public class Product {
+public class ProductEntity {
 
     @Id
     @Setter(AccessLevel.NONE)

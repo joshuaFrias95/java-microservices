@@ -1,6 +1,6 @@
 ## <-- Server config -->
 server:
-  port: 8080
+  port: 8082
 
 ## <-- Spring config -->
 spring:
@@ -8,16 +8,15 @@ spring:
     ansi:
       enabled: always
   application:
-    name: PRODUCT-SERVICE
+    name: ORDER-SERVICE
   datasource:
-    url: jdbc:mariadb://${DB_HOST:localhost}:3306/product_db
+    url: jdbc:mariadb://${DB_HOST:localhost}:3306/order_db
     username: root
     password: ${DB_PASSWORD:hi,welcome}
     driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
-
 
 ## <-- Eureka config -->
 eureka:

@@ -1,0 +1,18 @@
+## <-- Server config -->
+server:
+  port: 8761
+
+## <-- Spring config -->
+spring:
+  application:
+    name: EUREKA-SERVER
+  output:
+    ansi:
+      enabled: always
+
+
+## <-- Eureka config -->
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
