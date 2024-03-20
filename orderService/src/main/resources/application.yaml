@@ -9,6 +9,8 @@ spring:
       enabled: always
   application:
     name: ORDER-SERVICE
+  config:
+    import: configserver:http://localhost:9296
   datasource:
     url: jdbc:mariadb://${DB_HOST:localhost}:3306/order_db
     username: root
@@ -19,9 +21,9 @@ spring:
       ddl-auto: update
 
 ## <-- Eureka config -->
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka/}
